@@ -1,8 +1,7 @@
-package com.lightcyclesoftware.photoscodeexample.ui
+package lightcycleconsulting.com.skipcodeexample.adapter
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.github.pwittchen.infinitescroll.library.Preconditions
 
 /**
  * Created by Edward on 2/4/2018.
@@ -65,9 +64,4 @@ abstract class PhotoInfiniteScrollListener
      * @param firstVisibleItemPosition Id of the first visible item on the list.
      */
     abstract fun onScrolledToEnd(firstVisibleItemPosition: Int)
-
-    init {
-        Preconditions.checkIfPositive(maxItemsPerRequest, "maxItemsPerRequest <= 0")
-        Preconditions.checkNotNull(layoutManager, "layoutManager == null")
-    }
 }

@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Skip Coding Challenge</string>
+    <string name="get_products_endpoint">https://api.bestbuy.com/</string>
+    <string name="best_buy_api_key">7Ob7hGyGMBma1ilGiq7tc2XZ</string>
+    <string name="default_font">sans-serif</string>
+    <string name="name_tools_text">Jon Doe</string>
+    <string name="name">Name</string>
+    <string name="email_address">Email Address:</string>
+    <string name="team">Team</string>
+    <string name="employee_type">Employee Type</string>
+    <string name="biography">Biography</string>
+    <string name="biography_tools_text">Jon is from a small town in Georgia.</string>
+    <string name="employee_type_tools_text">Full-Time</string>
+    <string name="team_tools_text">Falcons</string>
+    <string name="email_tools_text">jon@gmail.com</string>
+    <string name="avatar_image">avatar image</string>
+    <string name="error_tools_text">error</string>
+    <string name="no_results">No Results</string>
+    <string name="work">Work</string>
+    <string name="arrow">Arrow</string>
+    <string name="profile">Profile</string>
+    <string name="avatar">avatar</string>
+    <string name="search">Search</string>
+    <string name="sku_text">SKU# %s</string>
+    <string name="price_format">%+.2f</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

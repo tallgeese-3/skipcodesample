@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_text_size">10sp</dimen>
+    <dimen name="error_text_size">14sp</dimen>
+    <dimen name="header_text_size">14sp</dimen>
+    <dimen name="subheader_text_size">13sp</dimen>
+    <dimen name="caption_text_size">11sp</dimen>
+    <dimen name="body_text_size">10sp</dimen>
+    <dimen name="default_constraint">0dp</dimen>
+    <dimen name="margin_x_small">4dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_large">16dp</dimen>
+    <dimen name="margin_x_large">32dp</dimen>
+    <dimen name="card_margin">16dp</dimen>
+    <dimen name="default_card_radius">2dp</dimen>
+    <dimen name="avatar_size">80dp</dimen>
+    <dimen name="more_info_size">30dp</dimen>
+</resources>
