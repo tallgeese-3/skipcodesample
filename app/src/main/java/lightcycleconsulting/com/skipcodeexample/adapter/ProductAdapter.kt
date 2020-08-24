@@ -33,4 +33,9 @@ class ProductAdapter(private var products: ArrayList<Product>?,  private val lis
     }
 
     override fun getItemCount(): Int { return products?.size!! }
+
+    fun clear() {
+        products?.let { this.products?.clear() }
+        notifyDataSetChanged()
+    }
 }

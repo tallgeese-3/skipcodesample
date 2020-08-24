@@ -1,9 +1,12 @@
 package lightcycleconsulting.com.skipcodeexample.activities
 
+import android.annotation.SuppressLint
+import android.os.Build
 import android.os.Bundle
-import android.view.Menu
+import android.view.MenuItem
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import lightcycleconsulting.com.skipcodeexample.R
+import kotlinx.android.synthetic.main.product.*
 import lightcycleconsulting.com.skipcodeexample.databinding.ActivityMainBinding
 
 
@@ -15,13 +18,15 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        setSupportActionBar(findViewById(R.id.toolbar))
-        supportActionBar?.title = " Skip Coding Challenge"
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.toolbar, menu)
-        return true
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

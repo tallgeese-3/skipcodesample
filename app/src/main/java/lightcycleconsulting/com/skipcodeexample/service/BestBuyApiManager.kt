@@ -17,7 +17,7 @@ class BestBuyApiManager {
 
 
     @ExperimentalSerializationApi
-    suspend fun getEmployeesCoroutines (cursorMark: String?): ProductResults {
+    suspend fun getEmployeesCoroutines (query: String?, cursorMark: String?): ProductResults {
         logging.level = HttpLoggingInterceptor.Level.BODY
         val baseUrl: String = "https://api.bestbuy.com/"
         httpClient.addInterceptor(logging)
@@ -29,6 +29,6 @@ class BestBuyApiManager {
             .addConverterFactory(Json.asConverterFactory(contentType))
             .client(httpClient.build())
             .build()
-        return retrofit.create(ProductApi::class.java).getProductsCoroutines("search=playstation","json","name,sku,salePrice,image,longDescription,url",cursorMark,"50", "7Ob7hGyGMBma1ilGiq7tc2XZ")
+        return retrofit.create(ProductApi::class.java).getProductsCoroutines(query,"json","name,sku,salePrice,image,longDescription,url",cursorMark,"50", "7Ob7hGyGMBma1ilGiq7tc2XZ")
     }
 }

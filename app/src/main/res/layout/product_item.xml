@@ -10,17 +10,11 @@
 
     </data>
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/card_margin"
-        app:cardCornerRadius="@dimen/default_card_radius">
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="@dimen/card_margin"
+            android:background="?android:attr/selectableItemBackground">
 
             <ImageView
                 android:id="@+id/avatar_image"
@@ -75,7 +69,5 @@
                 app:layout_constraintTop_toBottomOf="@+id/sku"
                 app:layout_constraintVertical_bias="1.0"
                 tools:text="Price" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
 </layout>

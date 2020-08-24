@@ -18,26 +18,36 @@ import lightcycleconsulting.com.skipcodeexample.model.Product
 class ProductViewModel(application: Application) : AndroidViewModel(application) {
     private val productResults :MutableLiveData<Resource<ProductResults>> by lazy {
         MutableLiveData<Resource<ProductResults>>().also {
-            loadProductResultsCoroutines()
         }
     }
 
     val selected = MutableLiveData<Product>()
+    val query = MutableLiveData<String>()
 
     fun select(item: Product?) {
         selected.value = item
+    }
+
+    fun setQuery(queryString: String?) {
+        query.value = queryString
+        productResults.value = Resource.loading(ProductResults())
     }
 
     fun getEmployees(): LiveData<Resource<ProductResults>> {
         return productResults
     }
 
-     fun loadProductResultsCoroutines() {
+    fun loadProductResultsCoroutines() {
+        loadProductResultsCoroutines(query.value)
+    }
+
+
+     fun loadProductResultsCoroutines(query: String?) {
          var resource: Resource<ProductResults>
          viewModelScope.launch(Dispatchers.IO) {
             resource = try {
                 val cursorMark = if (productResults.value?.data?.nextCursorMark != null) productResults.value?.data?.nextCursorMark else "*"
-                Resource.success(data = BestBuyApiManager().getEmployeesCoroutines(cursorMark))
+                Resource.success(data = BestBuyApiManager().getEmployeesCoroutines(query, cursorMark))
             } catch (exception: Exception) {
                 Resource.error(data = ProductResults(), message = exception.message ?: "Error Occurred!")
             }
