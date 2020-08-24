@@ -1,4 +1,4 @@
-package lightcycleconsulting.com.skipcodeexample.activities.utils
+package lightcycleconsulting.com.skipcodeexample.utils
 
 object QueryUtils {
     fun convertQueryToSearchParameter(query: String?): String {

@@ -33,7 +33,7 @@ class ProductViewModel(application: Application) : AndroidViewModel(application)
         productResults.value = Resource.loading(ProductResults())
     }
 
-    fun getEmployees(): LiveData<Resource<ProductResults>> {
+    fun getProducts(): LiveData<Resource<ProductResults>> {
         return productResults
     }
 
@@ -41,13 +41,12 @@ class ProductViewModel(application: Application) : AndroidViewModel(application)
         loadProductResultsCoroutines(query.value)
     }
 
-
-     fun loadProductResultsCoroutines(query: String?) {
+     private fun loadProductResultsCoroutines(query: String?) {
          var resource: Resource<ProductResults>
          viewModelScope.launch(Dispatchers.IO) {
             resource = try {
                 val cursorMark = if (productResults.value?.data?.nextCursorMark != null) productResults.value?.data?.nextCursorMark else "*"
-                Resource.success(data = BestBuyApiManager().getEmployeesCoroutines(query, cursorMark))
+                Resource.success(data = BestBuyApiManager().getEmployeesCoroutines(query, cursorMark, getApplication()))
             } catch (exception: Exception) {
                 Resource.error(data = ProductResults(), message = exception.message ?: "Error Occurred!")
             }

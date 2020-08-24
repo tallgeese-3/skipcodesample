@@ -6,7 +6,6 @@ import android.view.*
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
@@ -14,9 +13,10 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.SimpleItemAnimator
+import kotlinx.android.synthetic.main.error_layout.view.*
 import kotlinx.serialization.ExperimentalSerializationApi
 import lightcycleconsulting.com.skipcodeexample.R
-import lightcycleconsulting.com.skipcodeexample.activities.utils.QueryUtils.convertQueryToSearchParameter
+import lightcycleconsulting.com.skipcodeexample.utils.QueryUtils.convertQueryToSearchParameter
 import lightcycleconsulting.com.skipcodeexample.adapter.PhotoInfiniteScrollListener
 import lightcycleconsulting.com.skipcodeexample.adapter.ProductAdapter
 import lightcycleconsulting.com.skipcodeexample.databinding.ProductBinding
@@ -100,13 +100,14 @@ class ProductFragment: BaseFragment(), (Product?, Int) -> Unit {
     }
 
     private fun initObservers() {
-        productViewModel.getEmployees().observe(this, Observer {
+        productViewModel.getProducts().observe(this, Observer {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
                         binding.progressIndicator.visibility = View.GONE
                         if (it.data?.products?.size == 0 && adapter.itemCount == 0) {
                             binding.noData.errorView.visibility = View.GONE
+                            binding.noData.emptyView.empty_message.text = getString(R.string.no_results)
                             binding.noData.emptyView.visibility = View.VISIBLE
                         } else {
                             if (it.data?.products?.size == 0) {
@@ -129,6 +130,8 @@ class ProductFragment: BaseFragment(), (Product?, Int) -> Unit {
                         hasScrolled = false
                     }
                     Status.LOADING -> {
+                        binding.noData.errorView.visibility = View.GONE
+                        binding.noData.emptyView.visibility = View.GONE
                         binding.progressIndicator.visibility = View.VISIBLE
                     }
                 }
