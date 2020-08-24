@@ -6,18 +6,26 @@ import androidx.lifecycle.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.ExperimentalSerializationApi
 import lightcycleconsulting.com.skipcodeexample.model.ProductResults
 import lightcycleconsulting.com.skipcodeexample.service.BestBuyApiManager
 import lightcycleconsulting.com.skipcodeexample.service.Resource
 import lightcycleconsulting.com.skipcodeexample.R
+import lightcycleconsulting.com.skipcodeexample.model.Product
 
 
-
+@ExperimentalSerializationApi
 class ProductViewModel(application: Application) : AndroidViewModel(application) {
     private val productResults :MutableLiveData<Resource<ProductResults>> by lazy {
         MutableLiveData<Resource<ProductResults>>().also {
             loadProductResultsCoroutines()
         }
+    }
+
+    val selected = MutableLiveData<Product>()
+
+    fun select(item: Product?) {
+        selected.value = item
     }
 
     fun getEmployees(): LiveData<Resource<ProductResults>> {

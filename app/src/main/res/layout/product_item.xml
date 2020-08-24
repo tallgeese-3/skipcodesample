@@ -7,6 +7,7 @@
         <variable
             name="product"
             type="lightcycleconsulting.com.skipcodeexample.model.Product" />
+
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -24,14 +25,14 @@
             <ImageView
                 android:id="@+id/avatar_image"
                 android:layout_width="0dp"
-                app:layout_constraintWidth_percent="0.33"
                 android:layout_height="0dp"
                 android:contentDescription="@string/avatar"
-                android:scaleType="centerCrop"
+                android:scaleType="fitCenter"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.33"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView

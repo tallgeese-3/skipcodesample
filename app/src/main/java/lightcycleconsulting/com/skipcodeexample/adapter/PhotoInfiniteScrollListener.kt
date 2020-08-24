@@ -14,7 +14,7 @@ abstract class PhotoInfiniteScrollListener
  * @param maxItemsPerRequest Max items to be loaded in a single request.
  * @param layoutManager LinearLayoutManager created in the Activity.
  */
-(private var maxItemsPerRequest: Int, private var loadingPoint: Float, private var layoutManager: LinearLayoutManager) : RecyclerView.OnScrollListener() {
+(private var maxItemsPerRequest: Int, private var loadingPoint: Float, private val layoutManager: LinearLayoutManager) : RecyclerView.OnScrollListener() {
 
     /**
      * Callback method to be invoked when the RecyclerView has been scrolled

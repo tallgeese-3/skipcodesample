@@ -1,6 +1,7 @@
 package lightcycleconsulting.com.skipcodeexample.service
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import lightcycleconsulting.com.skipcodeexample.model.ProductResults
 import okhttp3.MediaType.Companion.toMediaType
@@ -15,6 +16,7 @@ class BestBuyApiManager {
     private val contentType = "application/json".toMediaType()
 
 
+    @ExperimentalSerializationApi
     suspend fun getEmployeesCoroutines (cursorMark: String?): ProductResults {
         logging.level = HttpLoggingInterceptor.Level.BODY
         val baseUrl: String = "https://api.bestbuy.com/"
